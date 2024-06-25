@@ -1,7 +1,7 @@
 package Iniro.kTrip.dto;
 
 import Iniro.kTrip.domain.Member;
-import Iniro.kTrip.jwt.JWTUtil;
+import Iniro.kTrip.jwt.JwtUtil;
 import Iniro.kTrip.repository.MemberRepository;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
@@ -17,10 +17,10 @@ import java.io.IOException;
 
 public class CustomLogoutFilter extends GenericFilterBean {
 
-    private final JWTUtil jwtUtil;
+    private final JwtUtil jwtUtil;
     private final MemberRepository memberRepository;
 
-    public CustomLogoutFilter(JWTUtil jwtUtil, MemberRepository memberRepository) {
+    public CustomLogoutFilter(JwtUtil jwtUtil, MemberRepository memberRepository) {
         this.jwtUtil = jwtUtil;
         this.memberRepository = memberRepository;
     }

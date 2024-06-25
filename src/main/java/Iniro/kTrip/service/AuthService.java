@@ -2,25 +2,22 @@ package Iniro.kTrip.service;
 
 import Iniro.kTrip.domain.Member;
 import Iniro.kTrip.dto.MemberDto;
-import Iniro.kTrip.jwt.JWTUtil;
+import Iniro.kTrip.jwt.JwtUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import Iniro.kTrip.repository.MemberRepository;
 
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
 
     private final MemberRepository memberRepository;
-    private final JWTUtil jwtUtil;
+    private final JwtUtil jwtUtil;
     private final PasswordEncoder encoder;
 
     private MemberDto memberDto;
