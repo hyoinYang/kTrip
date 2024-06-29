@@ -34,11 +34,12 @@ public class SecurityConfig {
                         .requestMatchers("/", "/login", "/join", "/oauth2/**", "/signUp", "/signIn").permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/", true)
-                        .permitAll()
-                )
+//                .formLogin(form -> form
+//                        .loginPage("/login")
+//                        .defaultSuccessUrl("/", true)
+//                        .permitAll()
+//                )
+
                 .logout(logout -> logout
                         .permitAll())
 

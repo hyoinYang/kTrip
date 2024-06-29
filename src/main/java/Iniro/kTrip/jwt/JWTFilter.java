@@ -17,9 +17,9 @@ import java.io.PrintWriter;
 
 public class JWTFilter extends OncePerRequestFilter {
 
-    private final JwtUtil jwtUtil;
+    private final JWTUtil jwtUtil;
 
-    public JWTFilter(JwtUtil jwtUtil) {
+    public JWTFilter(JWTUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
     }
     @Override

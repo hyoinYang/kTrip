@@ -2,7 +2,7 @@ package Iniro.kTrip.handler;
 
 import Iniro.kTrip.domain.CustomOAuth2User;
 import Iniro.kTrip.domain.Member;
-import Iniro.kTrip.jwt.JwtUtil;
+import Iniro.kTrip.jwt.JWTUtil;
 import Iniro.kTrip.repository.MemberRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-    private final JwtUtil jwtProvider;
+    private final JWTUtil jwtProvider;
     private final MemberRepository memberRepository;
 
     @Override

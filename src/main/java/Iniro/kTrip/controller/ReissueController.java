@@ -3,7 +3,7 @@ package Iniro.kTrip.controller;
 
 
 import Iniro.kTrip.domain.Member;
-import Iniro.kTrip.jwt.JwtUtil;
+import Iniro.kTrip.jwt.JWTUtil;
 import Iniro.kTrip.repository.MemberRepository;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.http.Cookie;
@@ -19,10 +19,10 @@ import java.util.Date;
 @RestController
 public class ReissueController
 {
-    private final JwtUtil jwtUtil;
+    private final JWTUtil jwtUtil;
     private final MemberRepository memberRepository;
 
-    public ReissueController(JwtUtil jwtUtil, MemberRepository memberRepository) {
+    public ReissueController(JWTUtil jwtUtil, MemberRepository memberRepository) {
         this.jwtUtil = jwtUtil;
         this.memberRepository = memberRepository;
     }
