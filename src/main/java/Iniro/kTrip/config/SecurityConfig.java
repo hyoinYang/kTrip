@@ -31,7 +31,7 @@ public class SecurityConfig {
 
         http    .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/", "/login", "/join", "/oauth2/**", "/signUp", "/signIn").permitAll()
+                        .requestMatchers("/", "/login", "/join", "/login/*", "/signUp", "/signIn").permitAll()
                         .anyRequest().authenticated()
                 )
 //                .formLogin(form -> form
@@ -44,12 +44,12 @@ public class SecurityConfig {
                         .permitAll())
 
                 .oauth2Login(oauth2 -> oauth2
-                        .redirectionEndpoint(endpoint -> endpoint.baseUri("/login/oauth2/code/naver"))
+                        .redirectionEndpoint(endpoint -> endpoint.baseUri("/"))
                                 .userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService)
                                 )
                                 .successHandler(oAuth2SuccessHandler)
-                                .defaultSuccessUrl("/", true)
-                                .failureUrl("/login?error=true")
+                                //.defaultSuccessUrl("/", true)
+                                //.failureUrl("/login?error=true")
 
 
                 // oauth2 설정

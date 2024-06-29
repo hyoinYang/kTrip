@@ -8,7 +8,7 @@ spring:
   jpa:
       generate-ddl: true
       hibernate:
-        ddl-auto: create
+        ddl-auto: update
 
   security:
     oauth2:
@@ -19,7 +19,7 @@ spring:
             client-secret: WFRCqDBZ3M
             authorization-grant-type: authorization_code
             #authorization-grant-type: client_credentials
-            redirect-uri: http://localhost:8080/login/oauth2/code/naver
+            redirect-uri: http://localhost:8080
             scope:
               - email
               - name
