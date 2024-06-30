@@ -9,6 +9,7 @@ public class ReviewConverter {
                 .point(review.getPoint())
                 .content(review.getContent())
                 .writedate(review.getWritedate())
+                .nickname(review.getMember().getNickname())
                 .build();
     }
 }

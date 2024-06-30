@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.net.URISyntaxException;
@@ -19,6 +20,7 @@ import static Iniro.kTrip.util.URLBuilder.fetch;
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class AreaService {
 
     public static List<?> getAreaInfo(String areaCode, String pageNo) throws URISyntaxException {

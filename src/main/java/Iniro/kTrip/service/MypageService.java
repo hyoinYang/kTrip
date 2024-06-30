@@ -13,11 +13,13 @@ import Iniro.kTrip.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
 @Service
+@Transactional(readOnly = true)
 public class MypageService {
     private final ReviewRepository reviewRepository;
     private final MemberRepository memberRepository;
@@ -34,7 +36,7 @@ public class MypageService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-
+    @Transactional
     public void changePassword(PasswordDto passwordDto) {
         String id = passwordDto.getId();
         String currentPassword = passwordDto.getCurrentPassword();
@@ -43,7 +45,7 @@ public class MypageService {
         if (member != null) {
             if (!currentPassword.equals(newPassword)){ // 현재 비밀번호와 새로운 비밀번호가 다를 때만 변경.
                 member.updatepassword(bCryptPasswordEncoder.encode(newPassword));
-                memberRepository.save(member);
+//                memberRepository.save(member);
             }
             else{
                 throw new IllegalArgumentException();
@@ -52,6 +54,7 @@ public class MypageService {
 
     }
 
+    @Transactional
     public void changeNickname(NicknameDto nicknameDto) {
         String id = nicknameDto.getId();
         String currentNickname = nicknameDto.getCurrentNickname();
@@ -60,7 +63,7 @@ public class MypageService {
         if (!memberRepository.existsByNickname(newNickname)){
             if (member != null && member.getNickname().equals(currentNickname)) {
                 member.setNickname(newNickname);
-                memberRepository.save(member);
+//                memberRepository.save(member);
             }
         }
         else{
@@ -101,6 +104,7 @@ public class MypageService {
 
 
 
+    @Transactional
     public void deleteReview(int review_id, Member member) {
 
         List<Review> reviews = reviewRepository.findByMember(member);
@@ -115,6 +119,7 @@ public class MypageService {
 
     }
 
+    @Transactional
     public void deleteFavorite(int fid, Member member) {
         List<Favorite> favorites= favoriteRepository.findByMember(member);
         for (int i = 0; i < favorites.size(); i++) {

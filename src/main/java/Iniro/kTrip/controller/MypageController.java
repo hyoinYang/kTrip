@@ -50,6 +50,7 @@ public class MypageController {
     public ResponseEntity<?> changeNickname(@RequestBody NicknameDto nicknameDto,  @RequestHeader("Authorization") String token) {
         String memberId = jwtUtil.getId(token);
         nicknameDto.setId(memberId);
+        System.out.println(memberId);
         mypageService.changeNickname(nicknameDto);
         return ResponseEntity.ok("/mypage");
     }

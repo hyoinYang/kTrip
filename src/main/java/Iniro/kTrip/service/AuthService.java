@@ -3,7 +3,6 @@ package Iniro.kTrip.service;
 import Iniro.kTrip.domain.Member;
 import Iniro.kTrip.dto.MemberDto;
 import Iniro.kTrip.jwt.JWTUtil;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -11,12 +10,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import Iniro.kTrip.repository.MemberRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class AuthService {
 
     private final MemberRepository memberRepository;
@@ -25,6 +26,7 @@ public class AuthService {
 
     private MemberDto memberDto;
 
+    @Transactional
     // 회원가입 서비스 코드
     public boolean signUp(Member member){
         Member isExist = memberRepository.findById(member.getId());

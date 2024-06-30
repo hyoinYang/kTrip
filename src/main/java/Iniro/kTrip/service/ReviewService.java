@@ -15,14 +15,17 @@ import Iniro.kTrip.domain.Member;
 import Iniro.kTrip.dto.ReviewDto;
 import Iniro.kTrip.util.ReviewConverter;
 import lombok.AllArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @AllArgsConstructor
 @Service
+@Transactional(readOnly = true)
 public class ReviewService {
 
     @Autowired
     ReviewRepository reviewRepository;
 
+    @Transactional
     public void registerReview(Review review) {
         reviewRepository.save(review);
     }

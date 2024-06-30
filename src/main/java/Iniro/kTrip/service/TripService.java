@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.simple.JSONObject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.ByteArrayOutputStream;
@@ -32,6 +33,7 @@ import static Iniro.kTrip.util.URLBuilder.fetch;
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class TripService {
 
     public static List<?> recommendTrip(String areaCode, String sigunguCode, String contenttypeid, String pageNo, String cat1) throws URISyntaxException {

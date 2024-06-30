@@ -9,4 +9,5 @@ public class ReviewDto {
     private int point;
     private String content;
     private String writedate;
+    private String nickname;
 }
